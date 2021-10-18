@@ -13,8 +13,15 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+/*             my own library <libft>            */
+# include "../libft/libft.h"
+
+/*       printf() function is not ALLOWED        */
+/*                  ATTENTION                    */
+# include <stdio.h>
+
 /*          write() and read() functions         */
-#include <sys/types.h>
+# include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
 

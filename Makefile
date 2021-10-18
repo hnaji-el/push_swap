@@ -12,7 +12,7 @@
 
 # OUTPUT: compile the project
 # CONTENT: usual rules (all, $(NAME), clean, fclean, re)
-# can only RECOMPILE the program if necessary
+# can only RECOMPILE the program if necessary (in the case : change anything in sources <push_swap> or <libft>)
 
 NAME = push_swap
 
@@ -24,10 +24,13 @@ LIBFT = ./libft/libft.a
 
 FLAGS = -Wall -Wextra -Werror
 
-all: libft $(NAME)
+all: $(NAME) libft_
 
-$(NAME): $(SRCS) $(INCLUDES)
+$(NAME): $(SRCS) $(INCLUDES) $(LIBFT)
 	@gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME) 
+
+libft_:
+	@make -C ./libft
 
 clean:
 	@make -C ./libft clean
@@ -38,7 +41,4 @@ fclean:
 
 re: fclean all
 
-libft:
-	@make -C ./libft 
-
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft_
