@@ -6,7 +6,7 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:16:41 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/10/06 12:22:35 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/10/18 12:29:47 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-
-	write(1, "hello world\n", 12); 
+	ft_putstr("hello world\n");
 	return (0);
 }

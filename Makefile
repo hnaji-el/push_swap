@@ -6,7 +6,7 @@
 #    By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 09:44:01 by hnaji-el          #+#    #+#              #
-#    Updated: 2021/10/06 12:23:14 by hnaji-el         ###   ########.fr        #
+#    Updated: 2021/10/18 12:27:58 by hnaji-el         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,12 @@ LIBFT = ./libft/libft.a
 
 FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME) libft_
+all: libft $(NAME)
 
 $(NAME): $(SRCS) $(INCLUDES) $(LIBFT)
 	@gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME) 
 
-libft_:
+libft:
 	@make -C ./libft
 
 clean:
@@ -41,4 +41,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean fclean re libft_
+.PHONY: all clean fclean re libft
