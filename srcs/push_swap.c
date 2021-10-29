@@ -11,11 +11,37 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include "../includes/stack.h"
+
+void	check_errors_and_fill_stack_a(t_stack *stack_a, int argc, char **argv)
+{
+	int		data;
+
+	while (argc-- > 1)
+	{
+		data = ft_atoi_plus_l(&argv[argc]);
+		if (*argv[argc] != '\0' || data < INT_MIN || data > INT_MAX)
+		{
+			printf("Error\n");
+			exit(1);
+		}
+		push(data, stack_a);
+	}
+}
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	ft_putstr("hello world\n");
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+
+	stack_a = create_empty_stack("a");
+	stack_b = create_empty_stack("b");
+	check_errors_and_fill_stack_a(stack_a, argc, argv);
+	printf("-------stack_a-------\n"); 
+	print_stack(stack_a);
+	printf("---------------------\n");
+//	printf("-------stack_b-------\n"); 
+//	print_stack(stack_b);
+//	printf("---------------------\n");
 	return (0);
 }
