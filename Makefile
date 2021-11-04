@@ -6,7 +6,7 @@
 #    By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 09:44:01 by hnaji-el          #+#    #+#              #
-#    Updated: 2021/10/18 12:27:58 by hnaji-el         ###   ########.fr        #
+#    Updated: 2021/11/04 12:17:17 by hnaji-el         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,19 @@
 NAME = push_swap
 
 SRCS = ./srcs/push_swap.c \
-		./srcs/push_swap_operations.c \
+		./srcs/push_swap_operations1.c \
+		./srcs/push_swap_operations2.c \
 		./srcs/stack_operations.c \
-		./srcs/counting_sort.c
+		./srcs/counting_sort.c \
+		./srcs/counting_sort_utils.c \
+		./srcs/parsing.c \
+		./srcs/sort_big_stack.c \
+		./srcs/sort_small_stack.c \
+		./srcs/free_memory.c
 
 INCLUDES = ./includes/push_swap.h \
-			./includes/stack.h
+			./includes/stack.h \
+			./includes/counting_sort.h
 
 LIBFT = ./libft/libft.a
 

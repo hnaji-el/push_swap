@@ -1,62 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   counting_sort.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/04 09:10:01 by hnaji-el          #+#    #+#             */
+/*   Updated: 2021/11/04 11:46:26 by hnaji-el         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-/*
- * Counting sort is efficient if the range of input data is not significantly
- * greater than the number of objects to be sorted.
- * Consider the situation where the input sequence is between range 1 to 10K
- * and the data is 10, 5, 10K, 5K. 
- * There is no comparison between any elements,
- * so it is better than comparison based sorting techniques.
- * But, it is bad if the integers are very large because the array of that size should be made.
- * ------- complexity -------
- * 1. time complexity
- * O(n+k) in all cases, where n is the number of elements and k is the range of input.
- * 2. space complexity
- * O(k)
- * ------ stability --------
- * stable
- */
-
-typedef struct	s_data
-{
-	int		*count_arr;
-	int		*dup_arr;
-	int		min;
-	int		max;
-}				t_data;
-
-int	get_max(int	*arr, int n)
-{
-	int		max;
-	int		i;
-
-	i = 0;
-	max = arr[0];
-	while (++i <= n - 1)
-	{
-		if (max < arr[i])
-			max = arr[i];
-	}
-	return (max);
-}
-
-int	get_min(int	*arr, int n)
-{
-	int		min;
-	int		i;
-
-	i = 0;
-	min = arr[0];
-	while (++i <= n - 1)
-	{
-		if (min > arr[i])
-			min = arr[i];
-	}
-	return (min);
-}
+#include "../includes/push_swap.h"
 
 t_data	*create_and_initialize_data(void)
 {
@@ -70,16 +24,6 @@ t_data	*create_and_initialize_data(void)
 	data->min = 0;
 	data->max = 0;
 	return (data);
-}
-
-int	free_data(t_data *data)
-{
-	if (data->count_arr != NULL)
-		free(data->count_arr);
-	if (data->dup_arr != NULL)
-		free(data->dup_arr);
-	free(data);
-	return (-1);
 }
 
 void	sort_original_array(int *arr, int i, t_data *data)
