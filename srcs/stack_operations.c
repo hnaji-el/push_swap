@@ -23,32 +23,33 @@ t_node	*get_new_node(int data)
 	if (node == NULL)
 		return (NULL);
 	node->data = data;
+	node->index = 0;
 	node->next = (void *)0;
 	node->prev = (void *)0;
 	return (node);
 }
 
-t_stack	*push(int data, t_stack *stack)
+int	push(int data, t_stack *stack)
 {
 	t_node	*node;
 
 	node = get_new_node(data);
 	if (node == NULL)
-		return (NULL);
+		return (-1);
 	stack->length += 1;
 	if (stack->top == NULL)
 	{
 		node->next = node;
 		node->prev = node;
 		stack->top = node;
-		return (stack);
+		return (0);
 	}
 	node->next = stack->top;
 	node->prev = stack->top->prev;
 	stack->top->prev->next = node;
 	stack->top->prev = node;
 	stack->top = node;
-	return (stack);
+	return (0);
 }
 
 void	pop(t_stack *stack)
@@ -57,6 +58,7 @@ void	pop(t_stack *stack)
 
 	if (stack->top == NULL)
 		return ;
+	stack->length -= 1;
 	if (stack->top == stack->top->next)
 	{
 		free(stack->top);

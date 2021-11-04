@@ -25,12 +25,15 @@ void	swap(t_stack *stack, int print)
 void	push_(t_stack *stack_1, t_stack *stack_2)
 {
 	int		data;
+	int		index;
 
 	if (stack_2->length == 0)
 		return ;
-	data = top(stack_2);
+	data = stack_2->top->data;
+	index = stack_2->top->index;
 	pop(stack_2);
 	push(data, stack_1);
+	stack_1->top->index = index;
 	print_operation("p", stack_1->name);
 }
 

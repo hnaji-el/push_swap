@@ -18,7 +18,8 @@ NAME = push_swap
 
 SRCS = ./srcs/push_swap.c \
 		./srcs/push_swap_operations.c \
-		./srcs/stack_operations.c
+		./srcs/stack_operations.c \
+		./srcs/counting_sort.c
 
 INCLUDES = ./includes/push_swap.h \
 			./includes/stack.h

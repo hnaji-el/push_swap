@@ -22,6 +22,7 @@
 /*       printf() function is not ALLOWED        */
 /*                  ATTENTION                    */
 # include <stdio.h>
+# include <stdbool.h>
 
 /*          write() and read() functions         */
 # include <sys/types.h>
