@@ -49,12 +49,35 @@ int	data_is_duplicate(t_stack *stack, int data)
 	return (0);
 }
 
+int	get_number_of_digits(char *str)
+{
+	int		i;
+	int		num_digit;
+
+	i = 0;
+	num_digit = 0;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		i++;
+		if (str[i] == '\0')
+			return (11);
+	}
+	while (ft_isdigit(str[i]))
+	{
+		i++;
+		num_digit++;
+	}
+	return (num_digit);
+}
+
 int	parsing(t_stack *stack, int argc, char **argv)
 {
 	long	data;
 
 	while (argc-- > 1)
 	{
+		if (get_number_of_digits(argv[argc]) > 10)
+			return (put_error(1));
 		data = ft_atoi_plus_l(&argv[argc]);
 		if (*argv[argc] != '\0' || data < INT_MIN || data > INT_MAX
 			|| data_is_duplicate(stack, data))

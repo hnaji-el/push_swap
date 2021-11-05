@@ -36,6 +36,10 @@
 /*     malloc(), free() and exit() functions     */
 # include <stdlib.h>
 
+void	insertion_sort(int *arr, int n);
+int		adjust_min_pos(t_stack *stack_a, int min_pos);
+int		get_min_pos(t_stack *stack);
+
 /*            sort_small_stack.c                 */
 int		sort_small_stack(t_stack *stack_a, t_stack *stack_b);
 void	sort_stack_3(t_stack *stack);

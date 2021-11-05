@@ -79,8 +79,7 @@ int	fill_indeces_in_stack_a(t_stack *stack_a)
 	if (auxill_arr == NULL)
 		return (-1);
 	copy_stack_into_array(stack_a, auxill_arr);
-	if (counting_sort(auxill_arr, stack_a->length) == -1)
-		return (-1);
+	insertion_sort(auxill_arr, stack_a->length);
 	while (1)
 	{
 		fill_index_in_node(temp, auxill_arr, stack_a->length);

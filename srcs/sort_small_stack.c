@@ -12,34 +12,13 @@
 
 #include "../includes/push_swap.h"
 
-int	get_min_pos(t_stack *stack)
-{
-	t_node 	*top;
-	t_node	*bottom;
-	int		min_pos;
-
-	min_pos = 1;
-	top = stack->top;
-	bottom = top->prev;
-	if (stack->length == 5)
-		bottom = bottom->prev;
-	if (top->data > top->next->data)
-		min_pos = 2;
-	if ((min_pos == 1 && top->data > bottom->prev->data)
-		|| (min_pos == 2 && top->next->data > bottom->prev->data))
-		min_pos = 3;
-	if ((min_pos == 1 && top->data > bottom->data)
-		|| (min_pos == 2 && top->next->data > bottom->data)
-		|| (min_pos == 3 && bottom->prev->data > bottom->data))
-		min_pos = 4;
-	return (min_pos);
-}
-
 int	sort_stack_5(t_stack *stack_a, t_stack *stack_b)
 {
 	int		min_pos;
 
 	min_pos = get_min_pos(stack_a);
+	if (min_pos >= 1 && min_pos <=3)
+		min_pos = adjust_min_pos(stack_a, min_pos);
 	while (min_pos > 1 && min_pos <= 3)
 	{
 		rotate(stack_a, 1);

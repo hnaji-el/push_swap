@@ -25,6 +25,8 @@ SRCS = ./srcs/push_swap.c \
 		./srcs/parsing.c \
 		./srcs/sort_big_stack.c \
 		./srcs/sort_small_stack.c \
+		./srcs/sort_small_stack_utils.c \
+		./srcs/insertion_sort.c \
 		./srcs/free_memory.c
 
 INCLUDES = ./includes/push_swap.h \
