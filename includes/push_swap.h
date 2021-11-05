@@ -36,11 +36,14 @@
 /*     malloc(), free() and exit() functions     */
 # include <stdlib.h>
 
-/*            sort_big_stack.c                   */
-int		sort_big_stack(t_stack *stack_a, t_stack *stack_b);
-
 /*            sort_small_stack.c                 */
 int		sort_small_stack(t_stack *stack_a, t_stack *stack_b);
+void	sort_stack_3(t_stack *stack);
+int		sort_stack_4(t_stack *stack_a, t_stack *stack_b);
+int		sort_stack_5(t_stack *stack_a, t_stack *stack_b);
+
+/*            sort_big_stack.c                   */
+int		sort_big_stack(t_stack *stack_a, t_stack *stack_b);
 
 /*                parsing.c                      */
 int		parsing(t_stack *stack, int argc, char **argv);

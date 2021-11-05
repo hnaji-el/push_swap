@@ -43,7 +43,7 @@ int	push_(t_stack *stack_1, t_stack *stack_2)
 	index = stack_2->top->index;
 	pop(stack_2);
 	if (push(data, stack_1) == -1)
-		return (put_error(2));
+		return (-1);
 	stack_1->top->index = index;
 	print_operation("p", stack_1->name);
 	return (0);

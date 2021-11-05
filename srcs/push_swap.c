@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		exit_status;
 	int		ret;
 
 	stack_a = create_empty_stack("a");
@@ -24,7 +25,7 @@ int	main(int argc, char **argv)
 		return (free_memory(stack_a, stack_b, put_error(2)));
 	/*
 	 * this function return:
-	 * ret == -1 if fail (Error[duplicate, non integer], allocation fail)
+	 * ret == -1 if fail (Error[duplicate, non integer], allocation fail) + error printed
 	 * ret == 0 if success (if stack no sorted)
 	 * ret == 1 if success (if stack sorted or empty)
 	 */
@@ -32,9 +33,10 @@ int	main(int argc, char **argv)
 	if (ret == 0)
 	{
 		if (stack_a->length <= 5)
-			ret = sort_small_stack(stack_a, stack_b);
+			ret = sort_small_stack(stack_a, stack_b);//return -1{fail<mem> + put_error} or 0{success}
 		else
-			ret = sort_big_stack(stack_a, stack_b);
+			ret = sort_big_stack(stack_a, stack_b);//return -1{fail<mem> + put_error} or 0{success}
 	}
-	return (free_memory(stack_a, stack_b, ret));
+	exit_status = free_memory(stack_a, stack_b, ret);
+	return (exit_status);
 }

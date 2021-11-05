@@ -12,22 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-void	fill_index_in_node(t_node *node, int *array, int size_array)
-{
-	int		i;
-
-	i = 0;
-	while (i < size_array)
-	{
-		if (node->data == array[i])
-		{
-			node->index = i;
-			break ;
-		}
-		i++;
-	}
-}
-
 void	copy_stack_into_array(t_stack *stack, int *array)
 {
 	int		i;
@@ -41,29 +25,6 @@ void	copy_stack_into_array(t_stack *stack, int *array)
 		temp = temp->next;
 		i++;
 	}
-}
-
-int	fill_indeces_in_stack_a(t_stack *stack_a)
-{
-	int		*auxill_arr;
-	t_node	*temp;
-
-	temp = stack_a->top;
-	auxill_arr = (int *)malloc(sizeof(int) * stack_a->length);
-	if (auxill_arr == NULL)
-		return (-1);
-	copy_stack_into_array(stack_a, auxill_arr);
-	if (counting_sort(auxill_arr, stack_a->length) == -1)
-		return (-1);
-	while (1)
-	{
-		fill_index_in_node(temp, auxill_arr, stack_a->length);
-		temp = temp->next;
-		if (temp == stack_a->top)
-			break ;
-	}
-	free(auxill_arr);
-	return (0);
 }
 
 int	sort_stack_by_ith_bit(t_stack *stack_a, t_stack *stack_b, int ith)
@@ -91,6 +52,45 @@ int	sort_stack_by_ith_bit(t_stack *stack_a, t_stack *stack_b, int ith)
 	}
 	return (0);
 }	
+
+void	fill_index_in_node(t_node *node, int *array, int size_array)
+{
+	int		i;
+
+	i = 0;
+	while (i < size_array)
+	{
+		if (node->data == array[i])
+		{
+			node->index = i;
+			break ;
+		}
+		i++;
+	}
+}
+
+int	fill_indeces_in_stack_a(t_stack *stack_a)
+{
+	int		*auxill_arr;
+	t_node	*temp;
+
+	temp = stack_a->top;
+	auxill_arr = (int *)malloc(sizeof(int) * stack_a->length);
+	if (auxill_arr == NULL)
+		return (-1);
+	copy_stack_into_array(stack_a, auxill_arr);
+	if (counting_sort(auxill_arr, stack_a->length) == -1)
+		return (-1);
+	while (1)
+	{
+		fill_index_in_node(temp, auxill_arr, stack_a->length);
+		temp = temp->next;
+		if (temp == stack_a->top)
+			break ;
+	}
+	free(auxill_arr);
+	return (0);
+}
 
 int	sort_big_stack(t_stack *stack_a, t_stack *stack_b)
 {
