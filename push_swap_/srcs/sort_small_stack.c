@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 11:04:13 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/04 15:13:38 by hnaji-el         ###   ########.fr       */
+/*   Created: 2021/11/06 20:28:22 by hnaji-el          #+#    #+#             */
+/*   Updated: 2021/11/06 20:28:53 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	sort_stack_5(t_stack *stack_a, t_stack *stack_b)
 	int		min_pos;
 
 	min_pos = get_min_pos(stack_a);
-	if (min_pos >= 1 && min_pos <=3)
+	if (min_pos >= 1 && min_pos <= 3)
 		min_pos = adjust_min_pos(stack_a, min_pos);
 	while (min_pos > 1 && min_pos <= 3)
 	{

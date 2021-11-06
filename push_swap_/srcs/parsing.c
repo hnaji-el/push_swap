@@ -6,7 +6,7 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 07:59:12 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/04 11:34:33 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 19:41:50 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	data_is_duplicate(t_stack *stack, int data)
 			return (1);
 		temp = temp->next;
 		if (temp == stack->top)
-			break;
+			break ;
 	}
 	return (0);
 }

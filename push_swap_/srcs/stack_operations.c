@@ -6,7 +6,7 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:24:16 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/04 13:26:41 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 19:38:55 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,29 +85,4 @@ void	pop(t_stack *stack)
 int	top(t_stack *stack)
 {
 	return (stack->top->data);
-}
-
-int		isempty(t_stack *stack)
-{
-	if (stack->top == NULL)
-		return (1);
-	return (0);
-}
-
-void	print_stack(t_stack *stack)
-{
-	t_node	*tail;
-
-	if (stack->top == NULL)
-	{
-		printf("the stack is empty ...\n");
-		return ;
-	}
-	tail = stack->top->prev;
-	while (stack->top != tail)
-	{
-		printf("%d\n", stack->top->data);
-		stack->top = stack->top->next;
-	}
-	printf("%d\n", stack->top->data);
 }

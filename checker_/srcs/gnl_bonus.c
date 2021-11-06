@@ -6,7 +6,7 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 02:14:17 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/06 16:09:12 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 20:37:08 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,6 @@ int	eof_neof(char *str)
 	return (0);
 }
 
-void	myfree(char **fr)
-{
-	if (*fr != NULL)
-	{
-		free(*fr);
-		*fr = NULL;
-	}
-}
-
 int	ft_len(char *str, int len)
 {
 	while (str[len] != '\0' && str[len] != '\n')
@@ -42,38 +33,59 @@ int	ft_len(char *str, int len)
 	return (len);
 }
 
-int	read_join(char **str, int fd)
+int	read_join(char **str, int fd, int r)
 {
-	int		r;
 	char	*buffer;
 	char	*fr;
 
-	r = 1;
-	if ((buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))) == NULL)
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (buffer == NULL)
 		return (-1);
 	if (!eof_neof(*str))
 	{
 		while (r > 0)
 		{
-			if ((r = read(fd, buffer, BUFFER_SIZE)) == -1)
+			r = read(fd, buffer, BUFFER_SIZE);
+			if (r == -1)
 				return (-1);
 			buffer[r] = '\0';
 			fr = *str;
-			if ((*str = ft_strjoin(*str, buffer)) == NULL)
+			*str = ft_strjoin(*str, buffer);
+			if (*str == NULL)
 				return (-1);
-			myfree(&fr);
+			ft_free_1d((void **)&fr);
 			if (eof_neof(*str))
 				break ;
 		}
 	}
-	myfree(&buffer);
+	ft_free_1d((void **)&buffer);
 	return (r);
+}
+
+int	filling_line(char **line, char **str, int r, int len)
+{
+	char		*fr;
+
+	*line = ft_substr(*str, 0, len);
+	if (*line == NULL)
+		return (-1);
+	fr = *str;
+	if (r == 0)
+	{
+		*str = NULL;
+		ft_free_1d((void **)&fr);
+		return (0);
+	}
+	*str = ft_strdup(*str + len + 1);
+	if (*str == NULL)
+		return (-1);
+	ft_free_1d((void **)&fr);
+	return (1);
 }
 
 int	get_next_line(int fd, char **line)
 {
 	static char	*str;
-	char		*fr;
 	int			r;
 	int			len;
 
@@ -81,18 +93,13 @@ int	get_next_line(int fd, char **line)
 		return (-1);
 	if (str == NULL)
 	{
-		if ((str = ft_strdup("")) == NULL)
+		str = ft_strdup("");
+		if (str == NULL)
 			return (-1);
 	}
-	if ((r = read_join(&str, fd)) == -1)
+	r = read_join(&str, fd, 1);
+	if (r == -1)
 		return (-1);
 	len = ft_len(str, 0);
-	if ((*line = ft_substr(str, 0, len)) == NULL)
-		return (-1);
-	fr = str;
-	str = (r == 0) ? NULL : ft_strdup(str + len + 1);
-	if ((r != 0) && str == NULL)
-		return (-1);
-	myfree(&fr);
-	return (r == 0 ? 0 : 1);
+	return (filling_line(line, &str, r, len));
 }
