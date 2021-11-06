@@ -6,30 +6,11 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 07:59:12 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/06 11:51:09 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 16:05:38 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap_bonus.h"
-
-int	stack_is_sorted(t_stack *stack)
-{
-	t_node	*temp;
-	int		i;
-
-	i = 0;
-	temp = stack->top;
-	if (stack->top == NULL)
-		return (1);
-	while (i < stack->length - 1)
-	{
-		if (temp->data > temp->next->data)
-			return (0);
-		temp = temp->next;
-		i++;
-	}
-	return (1);
-}
 
 int	data_is_duplicate(t_stack *stack, int data)
 {
@@ -44,7 +25,7 @@ int	data_is_duplicate(t_stack *stack, int data)
 			return (1);
 		temp = temp->next;
 		if (temp == stack->top)
-			break;
+			break ;
 	}
 	return (0);
 }

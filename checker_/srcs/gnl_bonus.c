@@ -6,13 +6,13 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/22 02:14:17 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/06 10:20:04 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 16:09:12 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap_bonus.h"
 
-int		eof_neof(char *str)
+int	eof_neof(char *str)
 {
 	int		i;
 
@@ -35,14 +35,14 @@ void	myfree(char **fr)
 	}
 }
 
-int		ft_len(char *str, int len)
+int	ft_len(char *str, int len)
 {
 	while (str[len] != '\0' && str[len] != '\n')
 		len++;
 	return (len);
 }
 
-int		read_join(char **str, int fd)
+int	read_join(char **str, int fd)
 {
 	int		r;
 	char	*buffer;
@@ -70,7 +70,7 @@ int		read_join(char **str, int fd)
 	return (r);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static char	*str;
 	char		*fr;
