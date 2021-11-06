@@ -10,37 +10,57 @@
 #                                                                              #
 # **************************************************************************** #
 
-# OUTPUT: compile the project
-# CONTENT: usual rules (all, $(NAME), clean, fclean, re)
-# can only RECOMPILE the program if necessary (in the case : change anything in sources <push_swap> or <libft>)
+NAME_PS = push_swap
 
-NAME = push_swap
+NAME_CHECKER = checker
 
-SRCS = ./srcs/push_swap.c \
-		./srcs/push_swap_operations1.c \
-		./srcs/push_swap_operations2.c \
-		./srcs/stack_operations.c \
-		./srcs/counting_sort.c \
-		./srcs/counting_sort_utils.c \
-		./srcs/parsing.c \
-		./srcs/sort_big_stack.c \
-		./srcs/sort_small_stack.c \
-		./srcs/sort_small_stack_utils.c \
-		./srcs/insertion_sort.c \
-		./srcs/free_memory.c
+SRCS_PS = ./push_swap_/srcs/main.c \
+		./push_swap_/srcs/push_swap_operations1.c \
+		./push_swap_/srcs/push_swap_operations2.c \
+		./push_swap_/srcs/stack_operations.c \
+		./push_swap_/srcs/counting_sort.c \
+		./push_swap_/srcs/counting_sort_utils.c \
+		./push_swap_/srcs/parsing.c \
+		./push_swap_/srcs/sort_big_stack.c \
+		./push_swap_/srcs/sort_small_stack.c \
+		./push_swap_/srcs/sort_small_stack_utils.c \
+		./push_swap_/srcs/insertion_sort.c \
+		./push_swap_/srcs/free_memory.c
 
-INCLUDES = ./includes/push_swap.h \
-			./includes/stack.h \
-			./includes/counting_sort.h
+SRCS_CHECKER = ./push_swap_/srcs/main.c \
+		./push_swap_/srcs/push_swap_operations1.c \
+		./push_swap_/srcs/push_swap_operations2.c \
+		./push_swap_/srcs/stack_operations.c \
+		./push_swap_/srcs/counting_sort.c \
+		./push_swap_/srcs/counting_sort_utils.c \
+		./push_swap_/srcs/parsing.c \
+		./push_swap_/srcs/sort_big_stack.c \
+		./push_swap_/srcs/sort_small_stack.c \
+		./push_swap_/srcs/sort_small_stack_utils.c \
+		./push_swap_/srcs/insertion_sort.c \
+		./push_swap_/srcs/free_memory.c
+
+INCLUDES_PS = ./push_swap_/includes/push_swap.h \
+			./push_swap_/includes/stack.h \
+			./push_swap_/includes/counting_sort.h
+
+INCLUDES_CHECKER = ./push_swap_/includes/push_swap.h \
+			./push_swap_/includes/stack.h \
+			./push_swap_/includes/counting_sort.h
 
 LIBFT = ./libft/libft.a
 
 FLAGS = -Wall -Wextra -Werror
 
-all: libft $(NAME)
+all: libft $(NAME_PS)
 
-$(NAME): $(SRCS) $(INCLUDES) $(LIBFT)
-	@gcc $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME) 
+$(NAME_PS): $(SRCS_PS) $(INCLUDES_PS) $(LIBFT)
+	@gcc $(FLAGS) $(SRCS_PS) $(LIBFT) -o $(NAME_PS) 
+
+bonus: libft $(NAME_CHECKER)
+
+$(NAME_CHECKER): $(SRCS_CHECKER) $(INCLUDES_CHECKER) $(LIBFT)
+	@gcc $(FLAGS) $(SRCS_CHECKER) $(LIBFT) -o $(NAME_CHECKER) 
 
 libft:
 	@make -C ./libft
@@ -50,8 +70,9 @@ clean:
 
 fclean:
 	@make -C ./libft fclean
-	@rm -rf $(NAME)
+	@rm -rf $(NAME_PS)
+	@rm -rf $(NAME_CHECKER)
 
 re: fclean all
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re bonus libft

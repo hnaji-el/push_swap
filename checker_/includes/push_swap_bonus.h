@@ -10,18 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
+typedef struct	s_node
+{
+	char			*data;
+	struct s_node	*next;
+}				t_node;
+
 /*      include stack.h and counting_sort.h		 */
-# include "stack.h"
-# include "counting_sort.h"
+# include "stack_bonus.h"
 
 /*         include my own library <libft>        */
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 
 /*       printf() function is not ALLOWED        */
 /*                  ATTENTION                    */
@@ -36,36 +41,31 @@
 /*     malloc(), free() and exit() functions     */
 # include <stdlib.h>
 
-void	insertion_sort(int *arr, int n);
-int		adjust_min_pos(t_stack *stack_a, int min_pos);
-int		get_min_pos(t_stack *stack);
+/*             push_swap_operations1_bonus.c           */
+void	swap(t_stack *stack);
+int		push_(t_stack *stack_1, t_stack *stack_2);
+void	rotate(t_stack *stack);
+void	reverse_rotate(t_stack *stack);
 
-/*            sort_small_stack.c                 */
-int		sort_small_stack(t_stack *stack_a, t_stack *stack_b);
-void	sort_stack_3(t_stack *stack);
-int		sort_stack_4(t_stack *stack_a, t_stack *stack_b);
-int		sort_stack_5(t_stack *stack_a, t_stack *stack_b);
-
-/*            sort_big_stack.c                   */
-int		sort_big_stack(t_stack *stack_a, t_stack *stack_b);
-
-/*                parsing.c                      */
-int		parsing(t_stack *stack, int argc, char **argv);
-
-/*                free_memory.c                      */
-int		free_memory(t_stack *stack_a, t_stack *stack_b, int ret);
-int		put_error(int arrnum);
-
-/*           push_swap_operations1.c             */
+/*           push_swap_operations2_bonus.c             */
 void	swap_on_two_stack(t_stack *stack_a, t_stack *stack_b);
 void	rotate_on_two_stack(t_stack *stack_a, t_stack *stack_b);
 void	rev_rotate_on_two_stack(t_stack *stack_a, t_stack *stack_b);
 
-/*             push_swap_operations2.c           */
-void	swap(t_stack *stack, int print);
-int		push_(t_stack *stack_1, t_stack *stack_2);
-void	rotate(t_stack *stack, int print);
-void	reverse_rotate(t_stack *stack, int print);
-void	print_operation(char *prefix, char *suffix);
+/*                free_memory_bonus.c                      */
+int		free_memory(t_stack *stack_a, t_stack *stack_b, int ret);
+int		put_error(int arrnum);
+
+/*                parsing.c                      */
+int		parsing(t_stack *stack, int argc, char **argv);
+int	stack_is_sorted(t_stack *stack);
+int	data_is_duplicate(t_stack *stack, int data);
+
+/*                circular_ll_bonus.c                      */
+t_node	*get_new_node(char *data);
+int 	insert_at_end(char *data, t_node **tail);
+void	delete_at_beg(t_node **tail);
+int		strlen_list(t_node *tail);
+void	print_list(t_node *tail);
 
 #endif
