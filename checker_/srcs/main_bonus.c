@@ -6,35 +6,54 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:16:41 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/04 13:19:49 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 11:58:29 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap_bonus.h"
 
-char	*read_one_instruction(void)
+int	check_if_sorted(t_stack *stack_a, t_stack *stack_b, char *instr)
 {
-	char	*buffer;
-	char	*str;
-	int		ret;
+	t_node	*temp;
+	int		i;
 
-	buffer = (char *)malloc(sizeof(char));
-	str = ft_strdup("");
-	while (1)
+	i = 0;
+	temp = stack_a->top;
+	if (ft_strlen(instr) > 0)
 	{
-		ret = read(0, buffer, 1);
-		if (ret == 0)
-			break ;
-		if (*buffer == '\n')
-		{
-			str = ft_strjoin(str, "\0");
-		}
-		str = ft_strjoin(str, buffer);
+		free(instr);
+		return (put_error(1));
 	}
+	free(instr);
+	while (i < stack_a->length - 1)
+	{
+		if (temp->data > temp->next->data)
+			return (put_error(3));
+		temp = temp->next;
+		i++;
+	}
+	write(1, "OK\n", 3);
+	return (0);
 }
 
-int	perform_instuctions(t_stack *stack_a, t_stack *stack_b)
+int	read_perform_instuctions(t_stack *stack_a, t_stack *stack_b)
 {
+	char	*instr;
+	int		ret;
+
+	ret = get_next_line(0, &instr);
+	while (ret == 1)
+	{
+		check_and_perform_instr(stack_a, stack_b, instr);
+		ret = get_next_line(0, &instr);
+	}
+	if (ret == 0)
+		return (check_if_sorted(stack_a, stack_b, instr));
+	if (ret == -1)
+	{
+		free(instr);
+		return (put_error(2));
+	}
 }
 
 int	main(int argc, char **argv)
@@ -56,10 +75,7 @@ int	main(int argc, char **argv)
 	 */
 	ret = parsing(stack_a, argc, argv);
 	if (ret == 0)
-	{
-		ret = read_instructions();
-		ret = perform_instuctions(stack_a, stack_b);
-	}
+		ret = read_perform_instuctions(stack_a, stack_b);// return -1{fail<gnl>} or 0{success}
 	exit_status = free_memory(stack_a, stack_b, ret);
 	return (exit_status);
 }

@@ -6,7 +6,7 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 11:45:51 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/04 12:19:18 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 11:58:32 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int	put_error(int errnum)
 	if (errnum == 1)
 		write(2, "Error\n", 6);
 	if (errnum == 2)
-		write(2, "Error\nCannot allocate memory\n", 29);
+		write(2, "Error\nget_next_line function fail\n", 34);
+	if (errnum == 3)
+		write(1, "KO\n", 3);
 	return (-1);
 }
 

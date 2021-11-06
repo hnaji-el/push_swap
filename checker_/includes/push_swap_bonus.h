@@ -6,21 +6,22 @@
 /*   By: hnaji-el <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:25:32 by hnaji-el          #+#    #+#             */
-/*   Updated: 2021/11/04 12:19:53 by hnaji-el         ###   ########.fr       */
+/*   Updated: 2021/11/06 10:28:30 by hnaji-el         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
-
 typedef struct	s_node
 {
 	char			*data;
 	struct s_node	*next;
 }				t_node;
+
+# define BUFFER_SIZE 1
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 /*      include stack.h and counting_sort.h		 */
 # include "stack_bonus.h"
@@ -31,7 +32,6 @@ typedef struct	s_node
 /*       printf() function is not ALLOWED        */
 /*                  ATTENTION                    */
 # include <stdio.h>
-# include <stdbool.h>
 
 /*          write() and read() functions         */
 # include <sys/types.h>
@@ -58,8 +58,8 @@ int		put_error(int arrnum);
 
 /*                parsing.c                      */
 int		parsing(t_stack *stack, int argc, char **argv);
-int	stack_is_sorted(t_stack *stack);
-int	data_is_duplicate(t_stack *stack, int data);
+int		stack_is_sorted(t_stack *stack);
+int		data_is_duplicate(t_stack *stack, int data);
 
 /*                circular_ll_bonus.c                      */
 t_node	*get_new_node(char *data);
@@ -67,5 +67,8 @@ int 	insert_at_end(char *data, t_node **tail);
 void	delete_at_beg(t_node **tail);
 int		strlen_list(t_node *tail);
 void	print_list(t_node *tail);
+
+/*                gnl_bonus.c                  */
+int		get_next_line(int fd, char **line);
 
 #endif
