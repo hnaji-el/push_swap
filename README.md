@@ -3,11 +3,11 @@ This repository contains the source files for the "push_swap" project of 1337 sc
 
 #                           The learning objectives
 
-***1. use of C and use of basic algorithms, Especially looking at the complexity of these basic algorithms.***
+>1. use of C and use of basic algorithms, Especially looking at the complexity of these basic algorithms.
 
-***2. rigor.***
+>2. rigor.
 
-***3. learn Sorting algorithms, and their complexities.***
+>3. learn Sorting algorithms, and their complexities.
 
 
 This project will make you sort data on a stack, with a limited set of instructions, using the lowest possible number of actions.
@@ -21,6 +21,7 @@ Push_swap instruction language that sorts the integer arguments received.
 You need to download this repository to your computer, then compile and run the code.
 
 use `make` to compile the ***push_swap*** program and use `./push_swap` to run it.
+
 use `make bonus` to compile the ***checker*** program and use `./checker` to run it.
 
 ***for more details read subject_en.pdf***
